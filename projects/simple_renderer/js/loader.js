@@ -16,14 +16,14 @@ async function main(){
     simple_renderer_instance = await LOADMODULE()
     obj_scene_file = await LOADSCENE();
     const memory = simple_renderer_instance.exports.memory;
-    const heap_base = simple_renderer_instance.exports.__heap_base;
+    const heap_base = simple_renderer_instance.exports.__heap_base.value;
 
-    console.log(typeof heap_base);
-    //const encoder = new TextEncoder();
-    //const objbytearray = encoder.encode(obj_scene_file);
+    console.log(heap_base);
 
-    //const view = new Uint8Array(memory.buffer);
-    //view.set(objbytearray, heap_base);
+    const encoder = new TextEncoder();
+    const objbytearray = encoder.encode(obj_scene_file)
+    const view = new Uint8Array(memory.buffer);
+    view.set(objbytearray, heap_base);
 }
 
 main();
