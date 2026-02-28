@@ -19,6 +19,7 @@ async function main(){
     const heap_base = simple_renderer_instance.exports.__heap_base.value;
 
     console.log(heap_base);
+    console.log(memory.buffer.byteLength);
 
     const encoder = new TextEncoder();
     const objbytearray = encoder.encode(obj_scene_file)
