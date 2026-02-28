@@ -1,5 +1,5 @@
 async function LOADMODULE(){
-    const responce = await fetch("../wasm-modules/simple_renderer.wasm");
+    const responce = await fetch("./wasm-modules/simple_renderer.wasm");
     const bytes = await responce.arrayBuffer();
     const module = await WebAssembly.compile(bytes);
     const simple_renderer_instance = await WebAssembly.instantiate(module);
@@ -7,7 +7,7 @@ async function LOADMODULE(){
 }
 
 async function LOADSCENE(){
-    const responce = await fetch("../models/test_scene.obj");
+    const responce = await fetch("./models/test_scene.obj");
     const content = await responce.text();
     return content
 }
